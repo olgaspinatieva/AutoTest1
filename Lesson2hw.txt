@@ -10,8 +10,24 @@ public class Lesson2hw {
 		WebDriverManager.chromedriver().setup();
 		ChromeDriver driver = new ChromeDriver();
 		
+		/*
 		// by class
 		driver.get("https://www.maib.md");
 		driver.manage().window().maximize();
 		driver.findElement(By.xpath("/html/body/div[2]/div/a")).click();
 		driver.findElement(By.className("with__sub_menu")).click();
+		*/
+			
+			
+		//by name + sendKeys
+		driver.get("https://999.md/");
+		driver.manage().window().maximize();
+		driver.findElement(By.name("query")).click();
+		driver.findElement(By.id("js-search-input")).sendKeys("bmw x3");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"js-search-form\"]/fieldset/button[2]/span")).click();
+		
+		
+	}
+
+}
