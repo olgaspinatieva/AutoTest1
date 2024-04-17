@@ -1,0 +1,52 @@
+package ui;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Lesson3hw {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.maximum.md");				
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		//xPath absolute locator
+		driver.findElement(By.xpath("/html/body/header/div/div/div/div/ul/li/a")).click(); //Gazeta
+		
+		//xPath relative locator
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//span[@class='header__menu__list__item__category__title__all ']")).click(); //toate produsele
+			
+		//xPath starts with
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//form[starts-with(@class,'js-search-form header__middle')]")).click(); //click placeholder CAUTĂ
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("/html/body/div[5]/div/div/div[4]/div/form/div/span[2]/input")).sendKeys("DeLonghi"); //type in "DeLonghi" text
+		Thread.sleep(2000);
+		
+		//XPATH actual text() 
+		driver.findElement(By.xpath("//span[text()='CAUTĂ']")).click();	//click on "CAUTĂ" button
+		
+		
+		//xpath contains
+		driver.findElement(By.xpath("//a[contains(@href,'6750076')]")).click(); //click on the model №6750076
+		Thread.sleep(2000);
+		
+		
+		//xpath AND , OR
+	
+		driver.findElement(By.xpath("//input[@class='js-search-main js-search-main header__middle__search__input tt-input' or @data-href='/search/suggestions']")).sendKeys("Samsung"); //type "Samsung" in "CAUTA" field 
+		driver.findElement(By.xpath("//span[text()='CAUTĂ']")).click();	//click on "CAUTĂ" button
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//img[@class='lazy-loaded' and @title='Uscător de rufe Samsung DV90T6240LX/S7 maximum.md']")).click(); //select model
+		
+		//xPath absolute locator
+		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div/div/div/div/a/span")).click(); // click Cumpara
+	}
+
+}
