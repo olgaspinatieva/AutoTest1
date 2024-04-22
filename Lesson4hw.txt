@@ -1,0 +1,58 @@
+package ui;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Lesson4hw {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.olx.ro");				
+		driver.manage().window().maximize();
+		
+		driver.findElement(By.cssSelector("#onetrust-accept-btn-handler")).click(); //by ID cssSelector (cookies accept)
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("span[class='css-xu7uwr']")).click(); //by class cssSelector (click on "Auto, moto si ambarcatiuni" caterory)
+		Thread.sleep(2000);
+				
+		driver.findElement(By.cssSelector("#searchmain-container > div.css-1hf80wu > div > div > div > div.css-13fcobv > div > a > span")).click(); //(click on "Vezi toate anunturile")
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("div[class='css-1a9sj2a']")).click(); //by class cssSelector (click on "Categoria" placeholder)
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("input[placeholder^='De l']")).click(); // prefix substring (click on "De la" placeholder)
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("div[data-testid='from-value-container']>div")).click(); //cssSelector Direct Child (select first price range)
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("input[placeholder*='ână l']")).click(); // matching substring (click on "Până la" placeholder)
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("#mainContent > div.css-1nvt13t > form > div:nth-child(3) > div.css-tx3aze > div > div.css-1y0lxug > div > div:nth-child(2) > div > div.css-1wg12ds > div > div:nth-child(3)")).click(); //cssSelector (select "5000" price range) 
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("label[class='css-ne25bi er34gjf0']")).click(); //by class cssSelector (check mark in "Doar cu poze" checkbox)
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("div.css-j1l9xo[title='Oferte pentru tine']")).click(); //by locator din doua atribute (click on "Oferte pentru tine" placeholder)
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("div[data-testid='sorting-option'][title='Noi']")).click(); //by locator din doua atribute (select "Noi" option)
+		Thread.sleep(2000);
+	
+		driver.findElement(By.cssSelector("button[data-testId='fav-search-btn']")).click(); //other attribute (click on "Salveaza cautare" button)
+		Thread.sleep(2000);
+		
+		driver.findElement(By.cssSelector("button[data-testId='filter-clear-all']")).click(); //other attribute (click on "Șterge filtrele" button)
+		Thread.sleep(2000);
+		
+	}	
+
+}
