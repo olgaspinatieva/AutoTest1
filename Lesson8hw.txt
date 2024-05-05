@@ -1,0 +1,74 @@
+package ui;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Lesson8hw_methods2 {
+
+public static void main(String[] args) throws InterruptedException {
+					
+
+	WebDriverManager.chromedriver().setup();
+	ChromeDriver driver = new ChromeDriver();	
+	
+	driver.get("https://www.apteka.md"); 
+			 
+	driver.manage().window().maximize(); 
+	
+	driver.findElement(By.cssSelector("input[placeholder='Căutare în toate categoriile']")).sendKeys("Citramon");
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"react-autowhatever-1--item-0\"]/div/div/div[2]/div[1]/div[2]/div")).click();
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/div/div/div[2]/div[3]/div[3]/div[1]/button")).click();
+	
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[1]/div/div[2]/div/div[1]/div/div/div[3]/div/div[3]/button/div[2]")).click();
+	
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[1]/div/div[2]/div/div[1]/div/div/div[3]/div/div[3]/div/div[2]/div[2]/button[2]")).click();
+	
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/div/div/div/div[2]/div[2]/div/a/div/div")).click();
+	
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/div/div/div/div[4]/div[1]/button/div[1]")).click();
+	Thread.sleep(3000);
+	WebElement radioButton1 = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/div/div/div/div[4]/div[1]/button/div[1]")); //radiobutton
+	Thread.sleep(3000);
+	System.out.println(radioButton1.isSelected());
+	
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/div/div/div/button")).click();
+	
+	
+	Thread.sleep(4000);
+	driver.findElement(By.id("farmacyRegion")).click(); 
+	WebElement dropdown = driver.findElement(By.id("farmacyRegion")); //dropdown
+	Select selectedOption = new Select(dropdown);
+	selectedOption.selectByVisibleText("mun. Chișinău");
+	Thread.sleep(3000);
+	
+	WebElement footerSection = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[1]/div[1]/div[1]"));
+	Actions scrollAction = new Actions(driver);  //scrolling
+	scrollAction.moveToElement(footerSection);
+	scrollAction.perform();
+	
+	WebElement despreNoi = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[1]/div[1]/div[2]/div/a[1]/div/div"));
+	Thread.sleep(4000);
+	Actions rightClick = new Actions(driver);  //rightclick
+	rightClick.contextClick(despreNoi).perform();
+	
+	
+	Thread.sleep(5000);
+	driver.quit(); //quit
+	
+	
+	}
+
+}

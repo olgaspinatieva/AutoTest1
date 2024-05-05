@@ -1,0 +1,76 @@
+package ui;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Lesson7hw_methods {
+
+public static void main(String[] args) throws InterruptedException {
+	
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver = new ChromeDriver();	
+		
+		driver.get("https://www.maib.md"); //get method
+				 
+		driver.manage().window().maximize(); // manage method
+		
+		driver.findElement(By.cssSelector("a[class='btn btn__small btn__green cookies__accept']")).click(); //findElement
+		
+		String currentUrl = driver.getCurrentUrl(); //get CurrentUrl
+		driver.manage().window().maximize();
+		System.out.println("the current address is: " + currentUrl);
+		
+		String currentTitle = driver.getTitle(); //get currentTitle
+		System.out.println("the current title is: " + currentTitle);
+		
+		System.out.println("Seach Placeholder has the following attribute: " + driver.findElement(By.xpath("/html/body/header/div[2]/div[2]/div/form/input")).getAttribute("class")); //getAttribute
+		
+		System.out.println("LOGO has the following size: " + driver.findElement(By.xpath("/html/body/header/div[1]/div/div[1]/div[1]/a/img")).getSize()); //metoda getSize
+
+		System.out.println("LOGO has the following location: " + driver.findElement(By.xpath("/html/body/header/div[1]/div/div[1]/div[1]/a/img")).getLocation()); //metoda getLocation
+				
+		System.out.println("LOGO has the following tagname: " + driver.findElement(By.xpath("/html/body/header/div[1]/div/div[1]/div[2]/div/ul/li[2]/a")).getTagName()); //metoda getTagName
+			
+		System.out.println("Button 'rețea unități' has the following border-radius: " + driver.findElement(By.xpath("/html/body/header/div[1]/div/div[1]/div[2]/div/ul/li[2]/a")).getCssValue("border-radius")); //metoda getcSSValue
+				
+		System.out.println("Button 'rețea unități' has the following text: " + driver.findElement(By.xpath("/html/body/header/div[1]/div/div[1]/div[2]/div/ul/li[2]/a")).getText()); //metoda getText
+		
+		System.out.println("Button 'Change language' is displayed: " + driver.findElement(By.xpath("/html/body/header/div[1]/div/div[1]/div[2]/div/ul/li[1]/div")).isDisplayed()); //is displayed
+		
+		System.out.println("Button 'Change language' is enabled: " + driver.findElement(By.xpath("/html/body/header/div[1]/div/div[1]/div[2]/div/ul/li[1]/div")).isEnabled()); //is enabled
+				
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("/html/body/header/div[2]/div[1]/div/div[2]/div")).click();
+		driver.findElement(By.xpath("/html/body/header/div[2]/div[2]/div/form/input")).sendKeys("filiala botanica"); //sendKeys	
+		
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("/html/body/header/div[2]/div[2]/div/form/input")).clear(); //clear	
+		Thread.sleep(3000);
+						
+		driver.navigate().to("https://www.maib.md/ro/persoane-fizice/maib-digital"); //navigate
+		String testSectionTitle = driver.getTitle();
+		System.out.println("the testing section is: " + testSectionTitle);
+		
+				
+		driver.findElement(By.cssSelector("a[data-target='#maib365']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[text()='internet banking persoane fizice']")).click();	//click
+		
+		Thread.sleep(2000);
+		driver.switchTo().window("windowHandle"); //switchTo
+				
+		
+		Thread.sleep(5000);
+		driver.close(); //close
+		
+		Thread.sleep(5000);
+		driver.quit(); //quit
+		
+	}
+
+}
