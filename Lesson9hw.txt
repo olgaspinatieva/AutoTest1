@@ -1,0 +1,92 @@
+package ui;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Date;
+import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.common.io.Files;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.NoSuchElementException;
+
+public class Lesson9hw {
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver = new ChromeDriver();
+		driver.get("https://www.sportsdirect.com"); 
+		driver.manage().window().maximize(); 
+		
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		
+		driver.findElementById("onetrust-accept-btn-handler").click(); //allow cookies
+		
+		WebElement trainers= driver.findElement(By.xpath("//*[@id=\"lnkTopLevelMenu_4209304\"]")); //hover over "MEN" category
+		Actions hoverActions = new Actions(driver);
+		hoverActions.moveToElement(trainers).perform();	
+		
+		File screenshotFile1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); //face screenshot1
+	    Files.copy(screenshotFile1, new File(".//screenshot/"+ "screenshotFile1" + ".png")); //salveaza fisieerul
+		
+		driver.findElement(By.xpath("//*[@id=\"liTopLevelMenu_4209304\"]/div/ul/li[3]/ul/li[2]/ul/li/ul/li[4]/a")).click(); //select "trainers" subcategory "MEN" category
+		
+		WebElement sortSection = driver.findElement(By.id("aSortQuantityOnBrands"));
+		Actions scrollAction = new Actions(driver);  //scrolling till sort section
+		scrollAction.moveToElement(sortSection);
+		scrollAction.perform();
+		
+		driver.findElement(By.id("txtBrandSearch")).click(); 
+		driver.findElement(By.id("txtBrandSearch")).sendKeys("Nike"); //typing "Nike" in brandsearch placeholder
+		WebElement search1 = driver.findElement(By.id("txtBrandSearch"));
+		Actions action = new Actions(driver);
+		action.keyDown(search1, Keys.CONTROL).sendKeys("a").sendKeys("c").build().perform(); //copy search word
+		
+		File screenshotFile2 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); //face screenshot2
+	    Files.copy(screenshotFile2, new File(".//screenshot/"+ "screenshotFile2" + ".png")); //salveaza fisieerul
+	    
+		WebElement search2 = driver.findElement(By.id("txtSearch"));
+		Thread.sleep(4000);
+		action.keyDown(search2, Keys.CONTROL).sendKeys("v").build().perform(); // input copied search word in the page search placeholder
+		
+		File screenshotFile3 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); //face screenshot3
+	    Files.copy(screenshotFile3, new File(".//screenshot/"+ "screenshotFile3" + ".png")); //salveaza fisieerul
+		
+		driver.findElement(By.id("txtSearch")).sendKeys(Keys.ARROW_DOWN);
+		driver.findElement(By.id("txtSearch")).sendKeys(Keys.ARROW_DOWN);
+		driver.findElement(By.id("txtSearch")).sendKeys(Keys.ENTER);
+		
+		File screenshotFile4 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); //face screenshot4
+	    Files.copy(screenshotFile4, new File(".//screenshot/"+ "screenshotFile4" + ".png")); //salveaza fisieerul
+		
+		
+		driver.findElement(By.xpath("//*[@id=\"navlist\"]/li[1]/div/div[2]/div/div[1]/a/span[2]/span")).click(); // select item
+		driver.findElement(By.xpath("//*[@id=\"ancLink\"]")).click(); // select size
+		
+		File screenshotFile5 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); //face screenshot5
+	    Files.copy(screenshotFile5, new File(".//screenshot/"+ "screenshotFile5" + ".png")); //salveaza fisieerul
+		
+		WebDriverWait wait = new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("ProductStandardAddToBag"))).click();
+		
+		File screenshotFile6 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); //face screenshot6
+	    Files.copy(screenshotFile6, new File(".//screenshot/"+ "screenshotFile6" + ".png")); //salveaza fisieerul
+	 
+	}
+
+}
