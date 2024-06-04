@@ -1,0 +1,47 @@
+package ui;
+import org.openqa.selenium.By;
+import org.testng.Reporter;
+import org.testng.annotations.Test;
+
+
+
+public class SimpleClass1 extends DriverClass1 {		
+	
+	@Test(dataProvider = "credentials1",dataProviderClass = dataProviderClass1.class)
+	public void providerDataTest1(String username, String password) throws InterruptedException {
+		
+	driver.get("https://www.saucedemo.com");
+	driver.manage().window().maximize(); 
+	
+	driver.findElement(By.id("user-name")).sendKeys(username);
+	Thread.sleep(3000);
+	driver.findElement(By.id("password")).sendKeys(password);
+	driver.findElement(By.id("login-button")).click();
+	
+	
+	}
+}
+
+
+
+
+package ui;
+
+import org.testng.annotations.DataProvider;
+
+public class dataProviderClass1 {
+	@DataProvider(name="credentials1")
+	public Object[][] providerDataSet1() {
+		
+		return new Object[][] {
+			
+			{"standard_user", "secret_sauce"},
+			{"locked_out_user", "secret_sauce"},
+			{"problem_user", "secret_sauce"},
+			{"performance_glitch_user", "secret_sauce"},
+			{"error_user", "secret_sauce"},
+			{"visual_user", "secret_sauce"}
+		};
+	}
+
+}

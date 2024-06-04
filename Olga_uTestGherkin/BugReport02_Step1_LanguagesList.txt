@@ -1,0 +1,22 @@
+[Registration form Step1] The filled in Date of birth isn't saved while moving back from the next steps
+
+(linked to TestCase01)
+
+
+When clicking on "Languages (spoken):" field
+
+Then The alphabetically sorted drop-down list of languages to choose from is shown
+
+
+
+Actual result: A part from languages' list is alphabetically sorted: Screenshot1, but the second part isn't alphabetically sorted: Screenshot2
+
+
+
+Attachments:
+
+Screenshot1, Screenshot2
+
+Severity: minor
+
+Priority: Low

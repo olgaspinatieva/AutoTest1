@@ -1,0 +1,202 @@
+TestCase01_New user's registration with valid data (Gherkin)
+
+Precondition: valid email for unregistered user
+
+Positive test (Gherkin)
+
+To be automated: Yes
+
+Priority: High
+
+Environment: www.utest.com
+
+
+
+Feature: New user's registration
+ 
+Scenario: New user's registration test with valid data
+
+
+Given The new user opens the registration form by click on “Become a uTester” button on the main page
+
+When The registration form is opened
+
+And All the required fields in Step 1 are filled in with a valid data manually or by autodetection: |First name:|Last name:|Email address:|Date of birth:|Languages (spoken):|
+And All the required fields in Step 2 are filled in with a valid data manually or by autodetection: |City:|Zip or Postal Code:|Country:|
+And All the fields in Step 3 are left empty or autodetected
+And All the required fields in Step 4 are filled in:|Confirm password| and the required checkboxes are checked
+And All the filled in data is saved when moving from one step to another and back till the click on  “Complete Setup” button 
+And The “Complete Setup” button is clicked
+And The email is confirmed by click on confirmation link received to the email
+
+Then User is successfully registered
+And User received confirmation email about the successful registration
+And User has the acces to his Tester Profile
+
+
+Execution Status: Failed 
+
+QA: Olga Spinatieva
+
+Date and time: 05/17/24, 15.30
+
+
+
+TestCase02_LogIn with valid data (Gherkin)
+
+Precondition: The user is inregistered on www.utest.com
+
+Positive test (Gherkin)
+
+To be automated: Yes
+
+Priority: High
+
+Environment: www.utest.com
+
+
+
+Feature: LogIn  
+
+Scenario: LogIn with valid data 
+
+
+Given The inregistred user opens the LogIn form by click on “Log In” button on the main page
+
+When The LogIn form is opened
+
+And All the valid Email and Password are filled in 
+
+And The "Submit" button is clicked on
+
+Then User got access to his profile
+
+
+
+Execution Status: Passed
+
+QA: Olga Spinatieva
+
+Date and time: 05/17/24, 16.00
+
+
+TestCase03_Update the Tester's Profile (Gherkin)
+
+Precondition: The user entered his profile on www.utest.com
+
+Positive test (Gherkin)
+
+To be automated: Yes
+
+Priority: Medium
+
+Environment: www.utest.com
+
+
+
+Feature: Update the profile  
+
+Scenario: Update the Tester's Profile
+
+
+Given The user entered his profile
+
+When Clicked on "Tester Profile" category
+
+And Filled in the empty fields
+
+And Cleared data from some not required fields which were filled in earlier
+
+And Clicked the "Save" button
+
+Then The profile is successfully updated
+
+
+
+Execution Status: Passed
+
+QA: Olga Spinatieva
+
+Date and time: 05/17/24, 16.10
+
+
+
+TestCase04_Update the Tester's Profile (Gherkin)
+
+Precondition: The user entered his profile on www.utest.com
+
+Positive test (Gherkin)
+
+To be automated: Yes
+
+Priority: High
+
+Environment: www.utest.com
+
+
+
+Feature: Apply to the project  
+
+Scenario: Tester can choose the project from the list and apply
+
+
+Given The user entered his profile and selected the "Projects" category 
+
+When Clicked on the "View All Projects" button  in "Projects Board" category
+
+And Clicked on the project title from the suggested list
+
+And Clicked the "Apply" button in the opened project
+
+Then The request for participation in the project is successfully sent
+
+
+
+Execution Status: Passed
+
+QA: Olga Spinatieva
+
+Date and time: 05/17/24, 16.20
+
+
+
+TestCase05_Sorting function when choosing a project 
+
+Precondition: The user entered his profile on www.utest.com and selected the "Projects" category
+
+Positive test (Gherkin)
+
+To be automated: Yes
+
+Priority: High
+
+Environment: www.utest.com
+
+
+
+Feature: Sorting function when choosing a project 
+
+Scenario: Tester can use the sorting function when choosing the project from the list
+
+Given The user clicked on "View All Projects" button in "Projects Board" category
+
+And The list ad all the available projects is shown
+ 
+When Selected the OS from the OS types available in the "OS" dropdown
+
+And Selected the country from the available list in the "Country" dropdown
+
+Then The list of the projects sorted by the selected options is shown on the page
+
+
+
+Execution Status: Passed
+
+QA: Olga Spinatieva
+
+Date and time: 05/17/24, 16.30
+
+
+
+
+

@@ -1,0 +1,28 @@
+[Registration form Step1] The filled in Date of birth isn't saved while moving back from the next steps
+
+(linked to TestCase01)
+
+
+When All the required fields from Step1 are filled in
+
+And User clicked on "Next: Location >" button
+
+And Clicked "Back" button 
+
+Then User is on the Step1 page
+
+And All the fields on the Step1 page are filled in 
+
+
+
+Actual result: A part of filled in data in Step1 is lost: <Date of birth:> fields
+
+
+
+Attachments:
+
+Video1
+
+Severity: minor
+
+Priority: Low
