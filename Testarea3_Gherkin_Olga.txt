@@ -1,0 +1,43 @@
+TestCase01_New user's registration with valid data (Gherkin)
+
+Precondition: a registered user with the valid credentials has been successfully logged in
+
+Positive test (Gherkin)
+
+To be automated: Yes
+
+Priority: High
+
+Environment: www.olx.ro
+
+
+
+Feature: User can place an order
+ 
+Scenario: Registered user can place an order
+
+
+Given The registered user has been has been successfully logged in
+
+When The product with active delivery option has been selected and added to the cart
+
+And The delivery method has been selected
+And All the required fields have been filled in: |Prenume|Nume|E-mail|Numar de telefon|Adresa|Localitate
+And Payment method has been selected
+And The 'Continua' button has been clicked
+And All the filled in data is saved when moving from one step to another and back till the click on  “Complete Setup” button 
+And The user has been redirected to the "Sumar de comanda' section
+And 'Plaseaza comanda' button has been clicked
+And The email is confirmed by click on confirmation link received to the email
+
+Then User see the 'Comanda Plasata' section
+And Button 'Mergi la comenzile mele" is active
+And User receives the email with order's confirmation
+
+
+Execution Status: Passed
+
+QA: Olga Spinatieva
+
+Date and time: 06/18/24 21.40
+
